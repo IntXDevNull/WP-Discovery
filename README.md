@@ -6,7 +6,7 @@ This Python script checks if a list of domains are built on WordPress by analyzi
 
 - Detects if a site is built on WordPress by looking for WordPress-specific markers in HTML content and HTTP headers.
 - Handles connection errors gracefully and logs the process.
-- Supports input and output via files.
+- Supports input and output via files. Logic includes normalizing domain URL by adding "http://" if the domain, or domain list does not include this.
 - Output can be used with for example https://github.com/rivsec/wordpress-rest-enum
 
 ## Requirements
@@ -21,3 +21,6 @@ This Python script checks if a list of domains are built on WordPress by analyzi
    ```bash
    git clone https://github.com/yourusername/WordPressDomainChecker.git
    cd WordPressDomainChecker
+
+## How to use
+- TBA
