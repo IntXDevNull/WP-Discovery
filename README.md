@@ -23,5 +23,6 @@ This Python script checks if a list of domains are built on WordPress by analyzi
    cd WordPressDomainChecker
 
 ## How to use
+```bash
 -d, --domains (required): Path to the file containing the list of domains to check.
 -o, --output (optional): Path to the file where the results (WordPress sites) will be saved. If not specified, results will be saved to wordpress_sites.txt.
