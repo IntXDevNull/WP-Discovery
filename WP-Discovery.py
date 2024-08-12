@@ -1,6 +1,7 @@
 import requests
 import argparse
 import logging
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -52,16 +53,29 @@ def main():
 
     args = parser.parse_args()
 
+    # Read domains from the input file
     with open(args.domains, 'r') as file:
         domain_list = [line.strip() for line in file.readlines()]
 
+    # Validate domains and get the list of WordPress sites
     wordpress_sites = validate_wordpress_sites(domain_list)
 
+    # Determine the output file name
     if args.output:
-        with open(args.output, 'w') as outfile:
-            outfile.write("\n".join(wordpress_sites))
+        output_file = args.output
+    else:
+        output_file = 'wordpress_sites.txt'
+
+    # Ensure the output file has a .txt extension
+    if not output_file.endswith('.txt'):
+        output_file += '.txt'
+
+    # Write the WordPress sites to the output file
+    with open(output_file, 'w') as outfile:
+        outfile.write("\n".join(wordpress_sites) + "\n")
 
     logging.info(f"WordPress sites found: {len(wordpress_sites)}")
+    logging.info(f"Results written to {output_file}")
 
 if __name__ == "__main__":
     main()
